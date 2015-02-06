@@ -3,4 +3,4 @@
 
 Ideas:
 
-1. get all contacts' address from Google, or search for friends in a location
+1. get all contacts' address from Google, or search for friends in a location--text individually over time interval?
