@@ -6,4 +6,5 @@ Ideas:
 1. get all contacts' address from Google, or search for friends in a location--text individually over time interval?
 2. twilio, customer notifications for promotion, discount, deals (QPX Express API -- Google API)
 3. location API, pokemon collection/badge
-4. twilio notifications for monitoring deal usage/danger, crime rate
+4. twilio notifications for monitoring deal usage/
+5. twilio, send messages when the location is dangerous, or crime rate high
