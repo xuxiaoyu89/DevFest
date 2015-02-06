@@ -9,3 +9,4 @@ Ideas:
 4. twilio notifications for monitoring deal usage/
 5. twilio, send messages when the location is dangerous, or crime rate high
 6. Game, according to street view picture, go to the place and be rewarded. Uses: GPS service of phone, Google street view image API.
+7. twilio notification game to answer trivia questions as quickly as possible
