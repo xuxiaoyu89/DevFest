@@ -5,7 +5,7 @@
 var geoHunterControllers = angular.module('geoHunterControllers', []);
 
 geoHunterControllers.controller('MainCtrl', ['$scope', '$log',
-    function($scope) {
+    function($scope, $log) {
         $scope.address = "";
         $scope.submit = function(){
             if ($scope.address) {
