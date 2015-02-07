@@ -11,12 +11,9 @@ geoHunterControllers.controller('PlayCtrl',
     
     /** Define functions **/
     function getLocalVars() {
-      longitude = JSON.parse($window.localStorage.getItem("lng"));
-      latitude = JSON.parse($window.localStorage.getItem("lat"));
+      longitude = parseFloat(JSON.parse($window.localStorage.getItem("lng")));
+      latitude = parseFloat(JSON.parse($window.localStorage.getItem("lat")));
       place_url = JSON.parse($window.localStorage.getItem("place_url"));
-      $log.info("longitude", longitude);
-      $log.info("latitude", latitude);
-      $log.info("place_url", place_url);
     }
     function detectBadRedirect() {
       var baddata = false;
@@ -35,29 +32,7 @@ geoHunterControllers.controller('PlayCtrl',
       if (place_url === null) {
         place_url = "http://placehold.it/500x300";
       }
-      $log.info("place_url", place_url);
       $scope.placeImage = place_url;
-    }
-    function getUserLocation() {
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          geoposition = position;
-          geolng = position.coords.longitude;
-          geolat = position.coords.latitude;
-          
-          getLocalVars();
-          $log.info([geoposition, longitude, latitude]);
-          detectBadRedirect();
-          if (correct) {
-            $scope.responseText = "Congratulations! You made it!"
-          } else {
-            $scope.responseText = "Sorry! This isn't the right place. :("
-          }
-        })
-      } else {
-        // Browser doesn't support Geolocation
-        $scope.responseText = "Can't determine your location! :("
-      }
     }
     function compareLocations() {
       if (geolat>(latitude-0.0004502) && geolat<(latitude+0.0004502)) {
@@ -76,11 +51,13 @@ geoHunterControllers.controller('PlayCtrl',
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
           geoposition = position;
-          geolng = position.coords.longitude;
-          geolat = position.coords.latitude;
+          geolng = parseFloat(position.coords.longitude);
+          geolat = parseFloat(position.coords.latitude);
           
+          $log.info([longitude, latitude, geolng, geolat]);
           compareLocations();
           clearLocalStorage();
+          $log.info("correct", correct)
           if (correct) {
             $window.localStorage.setItem("correct", angular.toJson(true));
           } else {
@@ -93,9 +70,7 @@ geoHunterControllers.controller('PlayCtrl',
       }
     }
     $scope.clickQuit = function() {
-      $window.localStorage.removeItem("lng");
-      $window.localStorage.removeItem("lat");
-      $window.localStorage.removeItem("place_url");
+      clearLocalStorage();
       $window.location.href = homepage;
     }
     
