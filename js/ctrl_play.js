@@ -28,21 +28,17 @@ geoHunterControllers.controller('PlayCtrl',
         $window.location.href = homepage;
       }
     }
-    function loadImage() {
+    function loadPlaceImage() {
       if (place_url === null) {
-        place_url = "http://placehold.it/350x150";
+        place_url = "http://placehold.it/500x300";
       }
+      $log.info("place_url", place_url);
       $scope.placeImage = place_url;
     }
-    var _img = document.getElementById('id1');
-var newImg = new Image;
-newImg.onload = function() {
-    _img.src = this.src;
-}
     
     /** Run functions **/
     getLocalVars();
     //detectBadRedirect();
-    
+    loadPlaceImage();
     
 });
