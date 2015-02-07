@@ -8,22 +8,6 @@ geoHunterControllers.controller('ConfirmCtrl',
     $scope.responseText;
     
     /** Define functions **/
-    function getUserLocation() {
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          $log.info(["geoposition", position]);
-          geoposition = position;
-          geolng = position.coords.longitude;
-          geolat = position.coords.latitude;
-        })
-        return true;
-      } else {
-        // Browser doesn't support Geolocation
-        $scope.responseText = "Can't determine your location! :("
-        return false;
-      }
-    }
-    
     function getLocalVars() {
       longitude = JSON.parse($window.localStorage.getItem("lng"));
       latitude = JSON.parse($window.localStorage.getItem("lat"));
@@ -45,22 +29,37 @@ geoHunterControllers.controller('ConfirmCtrl',
         $window.location.href = homepage;
       }
     }
-    
     function compareLocations() {
-      
+      if (geolat>(latitude-0.0004502) && geolat<(latitude+0.0004502)) {
+        if (geolng>(longitude-0.00059249) && geolng<(longitude+0.00059249)) {
+          return true;
+        }
+      }
+      return false;
     }
-    
     $scope.clickQuit = function() {
       $window.location.href = homepage;
     }
-    
+    function getUserLocation() {
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          geoposition = position;
+          geolng = position.coords.longitude;
+          geolat = position.coords.latitude;
+          
+          getLocalVars();
+          //detectBadRedirect();
+          if (compareLocations()) {
+            $scope.responseText = "Congratulations! You made it!"
+          }
+        })
+      } else {
+        // Browser doesn't support Geolocation
+        $scope.responseText = "Can't determine your location! :("
+      }
+    }
     
     /** Run functions **/
-    if (getUserLocation()) {
-      $log.info(["geoposition", geoposition, geolng, geolat]);
-      getLocalVars();
-      //detectBadRedirect();
-      compareLocations();
-    }
+    getUserLocation();
     
 });
