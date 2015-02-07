@@ -22,6 +22,10 @@ geoHunterApp.config(['$routeProvider',
             templateUrl: 'partials/play.html',
             controller: 'PlayCtrl'
         }).
+        when('/confirm', {
+            templateUrl: 'partials/confirm.html',
+            controller: 'ConfirmCtrl'
+        }).
         when('/temp', {
             templateUrl: 'partials/temp.html',
             controller: 'TempCtrl'
