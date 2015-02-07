@@ -54,8 +54,8 @@ geoHunterControllers.controller('MainCtrl',
             var infowindow = new google.maps.InfoWindow(options);
             map.setCenter(options.position);
         }
-        google.maps.event.addDomListener(window, 'load', initialize);
-        
+        //google.maps.event.addDomListener(window, 'load', initialize);
+        initialize();
         $scope.submit = function(){
             
             if ($scope.address) {
