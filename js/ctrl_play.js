@@ -36,11 +36,11 @@ geoHunterControllers.controller('PlayCtrl',
       $log.info("place_url", place_url);
       $scope.placeImage = place_url;
     }
-    function clickConfirm() {
+    $scope.clickConfirm = function() {
       //DO OTHER STUFF
       $window.location.href = nextpage;
     }
-    function clickQuit() {
+    $scope.clickQuit = function() {
       $window.localStorage.setItem("lng", angular.toJson(null));
       $window.localStorage.setItem("lat", angular.toJson(null));
       $window.localStorage.setItem("place_url", angular.toJson(null));
