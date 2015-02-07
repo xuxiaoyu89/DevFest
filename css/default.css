@@ -22,6 +22,17 @@ body {
   width: 100%;
 }
 
+.button {
+  background-color: rgba(86, 83, 91, 1);
+  color: rgba(255, 255, 255, 1);
+}
+.bt-confirm {
+  background-color: rgba(246, 189, 32, 1);
+}
+.bt-quit {
+  background-color: rgba(176, 19, 5, 1);
+}
+
 #map-canvas {
   width: 500px;
   height: 300px;
