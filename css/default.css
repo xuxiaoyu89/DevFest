@@ -42,9 +42,20 @@ body {
 }
 .bt-confirm {
   background-color: rgba(246, 189, 32, 1);
+  border-color: black;
+  color: black;
 }
 .bt-quit {
   background-color: rgba(176, 19, 5, 1);
+  border-color: black;
+}
+
+
+.play_img {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 }
 
 #map-canvas {
