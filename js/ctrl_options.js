@@ -28,8 +28,8 @@ geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routePa
         $scope.choosePic = function(obj) {
             var loc = obj.geometry.location;
 
-            $window.localStorage.setItem("lng", loc.D);
-            $window.localStorage.setItem("lat", loc.k);
+            $window.localStorage.setItem("lng", 40.809457);
+            $window.localStorage.setItem("lat", -73.961587);
             $window.localStorage.setItem("place_url", JSON.stringify($scope.getUrl(obj)));
 
             $location.path('/play');
@@ -44,11 +44,6 @@ geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routePa
                 // }
 
                 console.log(results);
-
-                console.log(results[1].photos[0].getUrl({
-                    maxWidth: 35,
-                    maxHeight: 35
-                }));
 
                 $scope.results = results;
 
