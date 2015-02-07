@@ -45,5 +45,15 @@ geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routePa
     }
 ]);
 
+geoHunterControllers.controller('PlayCtrl', ['$scope',
+    function($scope) {
 
+    }
+]);
+
+geoHunterControllers.controller('TempCtrl', ['$scope',
+    function($scope) {
+
+    }
+]);
 
