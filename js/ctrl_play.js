@@ -93,9 +93,9 @@ geoHunterControllers.controller('PlayCtrl',
       }
     }
     $scope.clickQuit = function() {
-      $window.localStorage.setItem("lng", angular.toJson(null));
-      $window.localStorage.setItem("lat", angular.toJson(null));
-      $window.localStorage.setItem("place_url", angular.toJson(null));
+      $window.localStorage.removeItem("lng");
+      $window.localStorage.removeItem("lat");
+      $window.localStorage.removeItem("place_url");
       $window.location.href = homepage;
     }
     
