@@ -1,5 +1,7 @@
-geoHunterControllers.controller('MainCtrl', ['$scope', '$log',
-    function($scope, $log) {
+geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http',
+    function($scope, $log, $http) {
+        $scope.long = 0.0;
+        $scope.lat = 0.0;
         $scope.address = "";
         var map;
         function initialize() {
@@ -14,6 +16,8 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log',
                     var pos = new google.maps.LatLng(position.coords.latitude,
                                                position.coords.longitude);
                     console.log("position", position.coords.latitude, position.coords.longitude);
+                    $scope.long = position.coords.longitude;
+                    $scope.lat = position.coords.latitude;
                     var infowindow = new google.maps.InfoWindow({
                         map: map,
                         position: pos,
@@ -47,6 +51,21 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log',
         $scope.submit = function(){
             if ($scope.address) {
                 $log.info($scope.address);
+                if ($scope.address === ""){
+                    
+                }
+                else{
+                    "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY"
+                    var key = "AIzaSyCdEJQfa3i2ul0Ji3p4xFuc9DNA1KY4HNw";
+                    var address = $scope.address;
+                    for (i=0; i<address.length(); i++){
+                        if(address[i] === " "){
+                            address[i] = "+";
+                        }
+                    }
+                    $log.info("address: ", address);
+                    var geo_url = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY" 
+                }
             }
         }
     }
