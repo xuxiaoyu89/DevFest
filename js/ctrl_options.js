@@ -1,8 +1,7 @@
 'use strict';
 
-
-geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routeParams',
-    function($scope, $document, $routeParams) {
+geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routeParams', '$log',
+    function($scope, $document, $routeParams, $log) {
         var map;
         var service;
         var infowindow;
@@ -38,6 +37,5 @@ geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routePa
         });
     }
 ]);
-
 
 

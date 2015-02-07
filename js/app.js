@@ -18,6 +18,14 @@ geoHunterApp.config(['$routeProvider',
             templateUrl: 'partials/options.html',
             controller: 'OptionsCtrl'
         }).
+        when('/play', {
+            templateUrl: 'partials/play.html',
+            controller: 'PlayCtrl'
+        }).
+        when('/temp', {
+            templateUrl: 'partials/temp.html',
+            controller: 'TempCtrl'
+        }).
         otherwise({
             redirectTo: '/'
         });
