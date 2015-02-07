@@ -5,6 +5,7 @@ geoHunterControllers.controller('PlayCtrl',
     var longitude, latitude, place_url;
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
     
+    //Define functions
     function getLocalVars() {
       longitude = JSON.parse($window.localStorage.getItem("lng"));
       latitude = JSON.parse($window.localStorage.getItem("lat"));
@@ -13,8 +14,6 @@ geoHunterControllers.controller('PlayCtrl',
       $log.info(latitude);
       $log.info(place_url);
     }
-    getLocalVars();
-    
     function detectBadRedirect() {
       var baddata = false;
       if (longitude === null || latitude === null) {
@@ -28,6 +27,10 @@ geoHunterControllers.controller('PlayCtrl',
         $window.location.href = homepage;
       }
     }
+    
+    //Run functions
+    getLocalVars();
+    detectBadRedirect();
     
     
 });
