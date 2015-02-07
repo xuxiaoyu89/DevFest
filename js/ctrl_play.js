@@ -41,6 +41,7 @@ geoHunterControllers.controller('PlayCtrl',
         }
       }
       correct = false;
+      $log.info([correct, longitude, geolng, latitude, geolat]);
     }
     function clearLocalStorage() {
       $window.localStorage.removeItem("lng");
