@@ -1,5 +1,5 @@
-geoHunterControllers.controller('PlayCtrl', ['$scope', '$window', '$document', '$routeParams', '$log',
-  function($scope, $document, $routeParams, $log, $window) {
+geoHunterControllers.controller('PlayCtrl',
+  function($sce, $rootScope, $scope, $document, $routeParams, $log, $window) {
     
     //Define all non-local variables here
     var longitude, latitude, place_url;
@@ -16,5 +16,4 @@ geoHunterControllers.controller('PlayCtrl', ['$scope', '$window', '$document', '
     getLocalVars();
     
     
-  }
-]);
+});
