@@ -11,6 +11,7 @@ geoHunterControllers.controller('ConfirmCtrl',
     function getUserLocation() {
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
+          log.info(["geoposition", position]);
           geoposition = position;
           geolng = position.coords.longitude;
           geolat = position.coords.latitude;
