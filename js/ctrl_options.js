@@ -28,8 +28,8 @@ geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routePa
         $scope.choosePic = function(obj) {
             var loc = obj.geometry.location;
 
-            $window.localStorage.setItem("lng", -73.961587);
-            $window.localStorage.setItem("lat", 40.809457);
+            $window.localStorage.setItem("lng", obj.geometry.location.k);
+            $window.localStorage.setItem("lat", obj.geometry.location.D);
             $window.localStorage.setItem("place_url", JSON.stringify($scope.getUrl(obj)));
 
             $location.path('/play');
