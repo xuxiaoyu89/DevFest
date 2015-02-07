@@ -4,9 +4,14 @@
 
 var geoHunterControllers = angular.module('geoHunterControllers', []);
 
-geoHunterControllers.controller('MainCtrl', ['$scope',
+geoHunterControllers.controller('MainCtrl', ['$scope', '$log',
     function($scope) {
-
+        $scope.address = "";
+        $scope.submit = function(){
+            if ($scope.address) {
+                $log.info($scope.address);
+            }
+        }
     }
 ]);
 
