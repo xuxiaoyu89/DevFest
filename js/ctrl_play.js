@@ -54,15 +54,10 @@ geoHunterControllers.controller('PlayCtrl',
           geolng = parseFloat(position.coords.longitude);
           geolat = parseFloat(position.coords.latitude);
           
-          $log.info([longitude, latitude, geolng, geolat]);
           compareLocations();
           clearLocalStorage();
-          $log.info("correct", correct)
-          if (correct) {
-            $window.localStorage.setItem("correct", angular.toJson(true));
-          } else {
-            $window.localStorage.setItem("correct", angular.toJson(false));
-          }
+          $window.localStorage.setItem("correct", angular.toJson(correct));
+          $window.location.href = nextpage;
         })
       } else {
         // Browser doesn't support Geolocation
