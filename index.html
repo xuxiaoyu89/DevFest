@@ -32,7 +32,7 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-      console.log("position", pos);
+      console.log("position", position.coords.latitude, position.coords.longitude);
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
