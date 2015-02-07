@@ -5,9 +5,9 @@ geoHunterControllers.controller('PlayCtrl', ['$scope', '$window', '$document', '
     var longitude, latitude, place_url;
     
     function getLocalVars() {
-      longitude = $window.localStorage.getItem("lng");
-      latitude = $window.localStorage.getItem("lat");
-      place_url = $window.localStorage.getItem("place_url");
+      longitude = JSON.parse($window.localStorage.getItem("lng"));
+      latitude = JSON.parse($window.localStorage.getItem("lat"));
+      place_url = JSON.parse($window.localStorage.getItem("place_url"));
       $log.info(longitude);
       $log.info(latitude);
       $log.info(place_url);
