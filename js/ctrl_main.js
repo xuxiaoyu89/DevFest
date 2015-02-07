@@ -1,5 +1,5 @@
-geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http',
-    function($scope, $log, $http) {
+geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$location',
+    function($scope, $log, $http, $location) {
         $scope.long = 0.0;
         $scope.lat = 0.0;
         $scope.address = "";
@@ -67,6 +67,7 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http',
                           $scope.long = data.results[0].geometry.location.lng;
                           $scope.lat = data.results[0].geometry.location.lat;
                           $log.info("lat, long: ", $scope.long, $scope.lat);
+                          $location.path("/options/" + $scope.long + "/" + $scope.lat);
                       }).
                       error(function(data, status, headers, config){
                           $log.info(status);
