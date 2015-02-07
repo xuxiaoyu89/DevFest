@@ -9,9 +9,9 @@ geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routePa
         var lng = $routeParams.lng;
         var lat = $routeParams.lat;
 
-        console.log("lng: " + lng + ", lat: " + lat);
+        console.log("lat: " + lat + ", lng: " + lng);
 
-        var pyrmont = new google.maps.LatLng(lng, lat);
+        var pyrmont = new google.maps.LatLng(lat, lng);
 
         map = document.getElementById('map');
 
