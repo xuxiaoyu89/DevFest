@@ -6,6 +6,7 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log',
         
         var map;
 function initialize() {
+    $log.info("in initialize");
   var mapOptions = {
     zoom: 14
   };
