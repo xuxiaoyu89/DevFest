@@ -1,7 +1,7 @@
 geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$location',
     function($scope, $log, $http, $location) {
-        $scope.long = 0.0;
-        $scope.lat = 0.0;
+        $scope.long = -73.9615376;
+        $scope.lat = 40.80942609;
         $scope.address = "";
         var map;
         function initialize() {
