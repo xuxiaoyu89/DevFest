@@ -49,6 +49,7 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
         google.maps.event.addDomListener(window, 'load', initialize);
         
         $scope.submit = function(){
+            
             if ($scope.address) {
                 $log.info($scope.address);
                 if ($scope.address === ""){
@@ -73,6 +74,9 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
                           $log.info(status);
                       });
                 }
+            }
+            else{
+                 $location.path("/options/" + $scope.lat + "/" + $scope.long);
             }
         }
     }
