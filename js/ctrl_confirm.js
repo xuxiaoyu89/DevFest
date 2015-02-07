@@ -4,13 +4,14 @@ geoHunterControllers.controller('ConfirmCtrl',
     /** Define all non-local variables here **/
     var longitude, latitude, place_url;
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
-    var geolng, geolat;
+    var geoposition, geolng, geolat;
     $scope.responseText;
     
     /** Define functions **/
     function getUserLocation() {
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
+          geoposition = position;
           geolng = position.coords.longitude;
           geolat = position.coords.latitude;
         })
@@ -55,7 +56,7 @@ geoHunterControllers.controller('ConfirmCtrl',
     
     /** Run functions **/
     if (getUserLocation()) {
-      $log.info(geolng, geolat);
+      $log.info(["geoposition", geoposition, geolng, geolat]);
       getLocalVars();
       //detectBadRedirect();
       compareLocations();
