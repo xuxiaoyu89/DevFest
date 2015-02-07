@@ -3,8 +3,10 @@ geoHunterControllers.controller('PlayCtrl',
     
     /** Define all non-local variables here **/
     var longitude, latitude, place_url;
+    var geoposition, geolat, geolng;
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
     var nextpage = "http://xuxiaoyu89.github.io/DevFest/#/confirm";
+    var correct = false;
     $scope.placeImage;
     
     /** Define functions **/
@@ -36,9 +38,59 @@ geoHunterControllers.controller('PlayCtrl',
       $log.info("place_url", place_url);
       $scope.placeImage = place_url;
     }
+    function getUserLocation() {
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          geoposition = position;
+          geolng = position.coords.longitude;
+          geolat = position.coords.latitude;
+          
+          getLocalVars();
+          $log.info([geoposition, longitude, latitude]);
+          detectBadRedirect();
+          if (correct) {
+            $scope.responseText = "Congratulations! You made it!"
+          } else {
+            $scope.responseText = "Sorry! This isn't the right place. :("
+          }
+        })
+      } else {
+        // Browser doesn't support Geolocation
+        $scope.responseText = "Can't determine your location! :("
+      }
+    }
+    function compareLocations() {
+      if (geolat>(latitude-0.0004502) && geolat<(latitude+0.0004502)) {
+        if (geolng>(longitude-0.00059249) && geolng<(longitude+0.00059249)) {
+          correct = true;
+        }
+      }
+      correct = false;
+    }
+    function clearLocalStorage() {
+      $window.localStorage.removeItem("lng");
+      $window.localStorage.removeItem("lat");
+      $window.localStorage.removeItem("place_url");
+    }
     $scope.clickConfirm = function() {
-      //DO OTHER STUFF
-      $window.location.href = nextpage;
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          geoposition = position;
+          geolng = position.coords.longitude;
+          geolat = position.coords.latitude;
+          
+          compareLocations();
+          clearLocalStorage();
+          if (correct) {
+            $window.localStorage.setItem("correct", angular.toJson(true));
+          } else {
+            $window.localStorage.setItem("correct", angular.toJson(false));
+          }
+        })
+      } else {
+        // Browser doesn't support Geolocation
+        $window.alert("Can't determine your location! :(");
+      }
     }
     $scope.clickQuit = function() {
       $window.localStorage.setItem("lng", angular.toJson(null));
