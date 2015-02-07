@@ -52,7 +52,7 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
             if ($scope.address) {
                 $log.info($scope.address);
                 if ($scope.address === ""){
-                    
+                    $location.path("/options/" + $scope.lat + "/" + $scope.long);
                 }
                 else{
                     //  "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY"
@@ -67,7 +67,7 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
                           $scope.long = data.results[0].geometry.location.lng;
                           $scope.lat = data.results[0].geometry.location.lat;
                           $log.info("lat, long: ", $scope.long, $scope.lat);
-                          $location.path("/options/" + $scope.long + "/" + $scope.lat);
+                          $location.path("/options/" + $scope.lat+ "/" + $scope.long);
                       }).
                       error(function(data, status, headers, config){
                           $log.info(status);
