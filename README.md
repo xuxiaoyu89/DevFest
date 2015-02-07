@@ -10,3 +10,4 @@ Ideas:
 5. twilio, send messages when the location is dangerous, or crime rate high
 6. Game, according to street view picture, go to the place and be rewarded. Uses: GPS service of phone, Google street view image API.
 7. twilio notification game to answer trivia questions (or translate API) as quickly as possible
+8. Game, user get to guess the google translate result, if they guess right then reward
