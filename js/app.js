@@ -23,3 +23,5 @@ geoHunterApp.config(['$routeProvider',
         });
     }
 ]);
+
+var geoHunterControllers = angular.module('geoHunterControllers', []);

@@ -1,17 +1,8 @@
 'use strict';
 
-/* Controllers */
 
-var geoHunterControllers = angular.module('geoHunterControllers', []);
-
-geoHunterControllers.controller('MainCtrl', ['$scope',
-    function($scope) {
-
-    }
-]);
-
-geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routeParams', '$log',
-    function($scope, $document, $routeParams, $log) {
+geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routeParams',
+    function($scope, $document, $routeParams) {
         var map;
         var service;
         var infowindow;
@@ -19,7 +10,7 @@ geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routePa
         var lng = $routeParams.lng;
         var lat = $routeParams.lat;
 
-        $log.log("lng: " + lng + ", lat: " + lat);
+        console.log("lng: " + lng + ", lat: " + lat);
 
         var pyrmont = new google.maps.LatLng(lng, lat);
 
@@ -39,7 +30,10 @@ geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routePa
                 //   createMarker(results[i]);
                 // }
 
+                console.log("A!")
+
                 $scope.results = results;
+                $scope.$digest();
             }
         });
     }
