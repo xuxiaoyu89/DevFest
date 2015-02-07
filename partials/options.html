@@ -1,7 +1,8 @@
-<ul>
+<h1 class="title">Pick a target</h1>
+
+<ul class="hz-pic-list">
     <li ng-repeat="res in results">
-        <div>{{res.name}}</div>     
-        <img ng-if="res.photos" ng-src="{{ getUrl(res) }}" ng-click="choosePic(res)">
+        <img alt="{{res.name}}" ng-src="{{ getUrl(res) }}" ng-click="choosePic(res)">
     </li>
 </ul>
 
