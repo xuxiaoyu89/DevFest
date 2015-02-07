@@ -16,8 +16,12 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
                     var pos = new google.maps.LatLng(position.coords.latitude,
                                                position.coords.longitude);
                     console.log("position", position.coords.latitude, position.coords.longitude);
-                    $scope.long = position.coords.longitude;
-                    $scope.lat = position.coords.latitude;
+                    $scope.$apply(function(){
+                        $scope.long = position.coords.longitude;
+                        $scope.lat = position.coords.latitude;
+                    })
+                    //$scope.long = position.coords.longitude;
+                    //$scope.lat = position.coords.latitude;
                     var infowindow = new google.maps.InfoWindow({
                         map: map,
                         position: pos,
