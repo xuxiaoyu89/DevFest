@@ -14,7 +14,7 @@ geoHunterApp.config(['$routeProvider',
             templateUrl: 'partials/main.html',
             controller: 'MainCtrl'
         }).
-        when('/search/:lng/:lat', {
+        when('/options/:lng/:lat', {
             templateUrl: 'partials/options.html',
             controller: 'OptionsCtrl'
         }).
