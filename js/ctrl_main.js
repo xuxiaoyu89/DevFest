@@ -12,7 +12,9 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
             map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
         // Try HTML5 geolocation
             if(navigator.geolocation) {
+                $log.info("support geolocation");
                 navigator.geolocation.getCurrentPosition(function(position) {
+                    $log.info("got location");
                     var pos = new google.maps.LatLng(position.coords.latitude,
                                                position.coords.longitude);
                     console.log("position", position.coords.latitude, position.coords.longitude);
@@ -29,10 +31,12 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
                     });
                     map.setCenter(pos);
                 }, function() {
+                    $log.info("the geolocation service failed");
                     handleNoGeolocation(true);
                 });
             } else {
                 // Browser doesn't support Geolocation
+                $log.info("Browser doesn't support Geolocation")
                 handleNoGeolocation(false);
             }
         }
