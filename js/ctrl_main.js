@@ -1,5 +1,5 @@
 geoHunterControllers.controller('MainCtrl', 
-    function($scope, $log, $http, $location) {
+    function($scope, $log, $http, $location, $window) {
         $scope.long = -73.962; //5376;
         $scope.lat = 40.809; //42609;
         $scope.address = "";
