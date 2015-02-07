@@ -5,13 +5,13 @@ geoHunterControllers.controller('ConfirmCtrl',
     var longitude, latitude, place_url;
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
     var geoposition, geolng, geolat;
+    var correct = false;
     $scope.responseText;
     
     /** Define functions **/
     function getLocalVars() {
       longitude = JSON.parse($window.localStorage.getItem("lng"));
       latitude = JSON.parse($window.localStorage.getItem("lat"));
-      place_url = JSON.parse($window.localStorage.getItem("place_url"));
       $window.localStorage.setItem("lng", angular.toJson(null));
       $window.localStorage.setItem("lat", angular.toJson(null));
       $window.localStorage.setItem("place_url", angular.toJson(null));
@@ -25,7 +25,8 @@ geoHunterControllers.controller('ConfirmCtrl',
         baddata = true;
       }
       if (baddata) {
-        $window.alert("You seem to have gotten here incorrectly...");
+        $scope.responseText = "You seem to have gotten here incorrectly...";
+        $log.info("You seem to have gotten here incorrectly...");
         //$window.location.href = homepage;
       }
     }
@@ -33,10 +34,10 @@ geoHunterControllers.controller('ConfirmCtrl',
     function compareLocations() {
       if (geolat>(latitude-0.0004502) && geolat<(latitude+0.0004502)) {
         if (geolng>(longitude-0.00059249) && geolng<(longitude+0.00059249)) {
-          return true;
+          correct = true;
         }
       }
-      return false;
+      correct = false;
     }
     
     $scope.clickQuit = function() {
@@ -51,9 +52,12 @@ geoHunterControllers.controller('ConfirmCtrl',
           geolat = position.coords.latitude;
           
           getLocalVars();
+          $log.info([geoposition, longitude, latitude]);
           detectBadRedirect();
-          if (compareLocations()) {
+          if (correct) {
             $scope.responseText = "Congratulations! You made it!"
+          } else {
+            $scope.responseText = "Sorry! This isn't the right place. :("
           }
         })
       } else {
