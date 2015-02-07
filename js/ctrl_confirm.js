@@ -4,8 +4,24 @@ geoHunterControllers.controller('ConfirmCtrl',
     /** Define all non-local variables here **/
     var longitude, latitude, place_url;
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
+    var geolng, geolat;
+    $scope.responseText;
     
     /** Define functions **/
+    function getUserLocation() {
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          geolng = position.coords.longitude;
+          geolat = position.coords.latitude;
+        })
+        return true;
+      } else {
+        // Browser doesn't support Geolocation
+        $scope.responseText = "Can't determine your location! :("
+        return false;
+      }
+    }
+    
     function getLocalVars() {
       longitude = JSON.parse($window.localStorage.getItem("lng"));
       latitude = JSON.parse($window.localStorage.getItem("lat"));
@@ -38,8 +54,11 @@ geoHunterControllers.controller('ConfirmCtrl',
     
     
     /** Run functions **/
-    getLocalVars();
-    //detectBadRedirect();
-    compareLocations();
+    if (getUserLocation()) {
+      $log.info(geolng, geolat);
+      getLocalVars();
+      //detectBadRedirect();
+      compareLocations();
+    }
     
 });
