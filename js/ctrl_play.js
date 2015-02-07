@@ -1,5 +1,5 @@
-geoHunterControllers.controller('PlayCtrl', ['$scope', '$document', '$routeParams', '$log',
-  function($scope, $document, $routeParams, $log) {
+geoHunterControllers.controller('PlayCtrl', ['$scope', '$window', '$document', '$routeParams', '$log',
+  function($scope, $document, $routeParams, $log, $window) {
     
     //Define all non-local variables here
     var longitude, latitude, place_url;
