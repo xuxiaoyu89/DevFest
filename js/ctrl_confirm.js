@@ -6,7 +6,7 @@ geoHunterControllers.controller('ConfirmCtrl',
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
     var geoposition, geolng, geolat;
     var correct = false;
-    $scope.responseText;
+    $scope.responseText = "NOTHING";
     
     /** Define functions **/
     function getLocalVars() {
