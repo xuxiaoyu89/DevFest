@@ -1,8 +1,7 @@
 <ul>
     <li ng-repeat="res in results">
-        <div>{{res.name}}</div>
-		<img ng-if="res.photos" src=        
-
+        <div>{{res.name}}</div>     
+        <img ng-if="res.photos" ng-src="{{ getUrl(res) }}" ng-click="choosePic(res)">
     </li>
 </ul>
 
