@@ -26,9 +26,10 @@ geoHunterControllers.controller('ConfirmCtrl',
       }
       if (baddata) {
         $window.alert("You seem to have gotten here incorrectly...");
-        $window.location.href = homepage;
+        //$window.location.href = homepage;
       }
     }
+    
     function compareLocations() {
       if (geolat>(latitude-0.0004502) && geolat<(latitude+0.0004502)) {
         if (geolng>(longitude-0.00059249) && geolng<(longitude+0.00059249)) {
@@ -37,9 +38,11 @@ geoHunterControllers.controller('ConfirmCtrl',
       }
       return false;
     }
+    
     $scope.clickQuit = function() {
       $window.location.href = homepage;
     }
+    
     function getUserLocation() {
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -48,7 +51,7 @@ geoHunterControllers.controller('ConfirmCtrl',
           geolat = position.coords.latitude;
           
           getLocalVars();
-          //detectBadRedirect();
+          detectBadRedirect();
           if (compareLocations()) {
             $scope.responseText = "Congratulations! You made it!"
           }
