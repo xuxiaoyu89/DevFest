@@ -1,4 +1,4 @@
-geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$location',
+geoHunterControllers.controller('MainCtrl', 
     function($scope, $log, $http, $location) {
         $scope.long = -73.962; //5376;
         $scope.lat = 40.809; //42609;
@@ -84,4 +84,4 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
             }
         }
     }
-]);
+);
