@@ -64,6 +64,9 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http',
                     $http.get(geo_url).
                       success(function(data, status, headers, config){
                           $log.info(data);
+                          $scope.long = data.results[0].geometry.location.lng;
+                          $scope.lat = data.results[0].geometry.location.lat;
+                          $log.info("lat, long: ", $scope.long, $scope.lat);
                       }).
                       error(function(data, status, headers, config){
                           $log.info(status);
