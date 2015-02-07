@@ -1,36 +1,33 @@
 geoHunterControllers.controller('MainCtrl', ['$scope', '$log',
     function($scope, $log) {
         $scope.address = "";
-        
-        
-        
         var map;
         function initialize() {
-        $log.info("in initialize");
-        var mapOptions = {
-            zoom: 14
-        };
-        map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+            $log.info("in initialize");
+                var mapOptions = {
+                    zoom: 14
+                };
+            map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
         // Try HTML5 geolocation
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = new google.maps.LatLng(position.coords.latitude,
-                                           position.coords.longitude);
-            console.log("position", position.coords.latitude, position.coords.longitude);
-            var infowindow = new google.maps.InfoWindow({
-                map: map,
-                position: pos,
-                content: 'Location found using HTML5.'
-            });
-            map.setCenter(pos);
-            }, function() {
-                handleNoGeolocation(true);
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleNoGeolocation(false);
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = new google.maps.LatLng(position.coords.latitude,
+                                               position.coords.longitude);
+                    console.log("position", position.coords.latitude, position.coords.longitude);
+                    var infowindow = new google.maps.InfoWindow({
+                        map: map,
+                        position: pos,
+                        content: 'Location found using HTML5.'
+                    });
+                    map.setCenter(pos);
+                }, function() {
+                    handleNoGeolocation(true);
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleNoGeolocation(false);
+            }
         }
-    }
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
     var content = 'Error: The Geolocation service failed.';
