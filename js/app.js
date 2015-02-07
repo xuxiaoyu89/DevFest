@@ -11,12 +11,12 @@ geoHunterApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/', {
-            templateUrl: 'partials/search.html',
-            controller: 'SearchCtrl'
+            templateUrl: 'partials/main.html',
+            controller: 'MainCtrl'
         }).
         when('/search/:lng/:lat', {
-            templateUrl: 'partials/show_pics.html',
-            controller: 'ShowPicsCtrl'
+            templateUrl: 'partials/options.html',
+            controller: 'OptionsCtrl'
         }).
         otherwise({
             redirectTo: '/'

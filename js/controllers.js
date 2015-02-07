@@ -4,7 +4,13 @@
 
 var geoHunterControllers = angular.module('geoHunterControllers', []);
 
-geoHunterControllers.controller('ShowPicsCtrl', ['$scope', '$document', '$routeParams', '$log',
+geoHunterControllers.controller('MainCtrl', ['$scope',
+    function($scope) {
+
+    }
+]);
+
+geoHunterControllers.controller('OptionsCtrl', ['$scope', '$document', '$routeParams', '$log',
     function($scope, $document, $routeParams, $log) {
         var map;
         var service;
@@ -40,8 +46,4 @@ geoHunterControllers.controller('ShowPicsCtrl', ['$scope', '$document', '$routeP
 ]);
 
 
-geoHunterControllers.controller('SearchCtrl', ['$scope',
-    function($scope) {
 
-    }
-]);
