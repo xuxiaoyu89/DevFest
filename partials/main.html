@@ -1,13 +1,20 @@
 <div class="body_full">
   
   <div class="title">Geo Hunters</div>
+  <div class="section">How well do you know your neighborhood?</div>
   
+  <div id="map-canvas"></div>
+  
+  <div class="section">We've determined your location to be:</div>
+  <div class="section">({{long}}, {{lat}})</div>
+  
+  <div class="section">Enter a different address:</div>
   <form ng-submit="submit()" ng-controller="MainCtrl">
-    Address: <input type="text" name="address" ng-model="address"> </br>
+    <input type="text" name="address" ng-model="address"> </br>
     <input type="submit" id="submit" value="Submit" />
   </form>
   
-  <div id="map-canvas"></div>
+  
   
   
 </div>
