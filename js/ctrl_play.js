@@ -1,18 +1,18 @@
 geoHunterControllers.controller('PlayCtrl',
   function($sce, $rootScope, $scope, $document, $routeParams, $log, $window) {
     
-    //Define all non-local variables here
+    /** Define all non-local variables here **/
     var longitude, latitude, place_url;
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
     
-    //Define functions
+    /** Define functions **/
     function getLocalVars() {
       longitude = JSON.parse($window.localStorage.getItem("lng"));
       latitude = JSON.parse($window.localStorage.getItem("lat"));
       place_url = JSON.parse($window.localStorage.getItem("place_url"));
-      $log.info(longitude);
-      $log.info(latitude);
-      $log.info(place_url);
+      $log.info("longitude", longitude);
+      $log.info("latitude", latitude);
+      $log.info("place_url", place_url);
     }
     function detectBadRedirect() {
       var baddata = false;
@@ -28,9 +28,9 @@ geoHunterControllers.controller('PlayCtrl',
       }
     }
     
-    //Run functions
+    /** Run functions **/
     getLocalVars();
-    detectBadRedirect();
+    //detectBadRedirect();
     
     
 });
