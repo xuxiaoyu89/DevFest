@@ -4,6 +4,7 @@ geoHunterControllers.controller('PlayCtrl',
     /** Define all non-local variables here **/
     var longitude, latitude, place_url;
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
+    var nextpage = "http://xuxiaoyu89.github.io/DevFest/#/confirm";
     $scope.placeImage;
     
     /** Define functions **/
@@ -35,6 +36,17 @@ geoHunterControllers.controller('PlayCtrl',
       $log.info("place_url", place_url);
       $scope.placeImage = place_url;
     }
+    function clickConfirm() {
+      //DO OTHER STUFF
+      $window.location.href = nextpage;
+    }
+    function clickQuit() {
+      $window.localStorage.setItem("lng", angular.toJson(null));
+      $window.localStorage.setItem("lat", angular.toJson(null));
+      $window.localStorage.setItem("place_url", angular.toJson(null));
+      $window.location.href = homepage;
+    }
+    
     
     /** Run functions **/
     getLocalVars();
