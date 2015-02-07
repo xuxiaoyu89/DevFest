@@ -39,6 +39,7 @@ body {
   border-radius: 2px;
   cursor: pointer;
   vertical-align: center;
+  margin: 3px;
 }
 .bt-confirm {
   background-color: rgba(246, 189, 32, 1);
