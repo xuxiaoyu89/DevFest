@@ -27,10 +27,13 @@ geoHunterControllers.controller('ConfirmCtrl',
     function determineResponse() {
       if (correct === null || correct === undefined) {
         $scope.responseText = "You seem to have gotten here incorrectly...";
+        $scope.confirmImage = "imgs/sorry.gif";
       } else if (correct) {
         $scope.responseText = "Congratulations! You made it!"
+        $scope.confirmImage = "imgs/winkitty.gif";
       } else {
         $scope.responseText = "Sorry! You aren't there yet."
+        $scope.confirmImage = "imgs/sorry.gif";
       }
     }
     $scope.clickQuit = function() {
