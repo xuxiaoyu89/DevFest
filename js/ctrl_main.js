@@ -52,28 +52,24 @@ geoHunterControllers.controller('MainCtrl', ['$scope', '$log', '$http', '$locati
             
             if ($scope.address) {
                 $log.info($scope.address);
-                if ($scope.address === ""){
-                    $location.path("/options/" + $scope.lat + "/" + $scope.long);
-                }
-                else{
-                    //  "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY"
-                    var key = "&key=AIzaSyCdEJQfa3i2ul0Ji3p4xFuc9DNA1KY4HNw";
-                    var address = $scope.address.replace(/ /g, "+");
-                    $log.info("address: ", address);
-                    var geo_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + key;
-                    $log.info("url: ", geo_url);
-                    $http.get(geo_url).
-                      success(function(data, status, headers, config){
-                          $log.info(data);
-                          $scope.long = data.results[0].geometry.location.lng;
-                          $scope.lat = data.results[0].geometry.location.lat;
-                          $log.info("lat, long: ", $scope.long, $scope.lat);
-                          $location.path("/options/" + $scope.lat+ "/" + $scope.long);
-                      }).
-                      error(function(data, status, headers, config){
-                          $log.info(status);
-                      });
-                }
+                
+                //  "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY"
+                var key = "&key=AIzaSyCdEJQfa3i2ul0Ji3p4xFuc9DNA1KY4HNw";
+                var address = $scope.address.replace(/ /g, "+");
+                $log.info("address: ", address);
+                var geo_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + key;
+                $log.info("url: ", geo_url);
+                $http.get(geo_url).
+                success(function(data, status, headers, config){
+                    $log.info(data);
+                    $scope.long = data.results[0].geometry.location.lng;
+                    $scope.lat = data.results[0].geometry.location.lat;
+                    $log.info("lat, long: ", $scope.long, $scope.lat);
+                    $location.path("/options/" + $scope.lat+ "/" + $scope.long);
+                }).
+                error(function(data, status, headers, config){
+                    $log.info(status);
+                });
             }
             else{
                  $location.path("/options/" + $scope.lat + "/" + $scope.long);
