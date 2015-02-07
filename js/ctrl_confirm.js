@@ -5,68 +5,41 @@ geoHunterControllers.controller('ConfirmCtrl',
     var longitude, latitude, place_url;
     var homepage = "http://xuxiaoyu89.github.io/DevFest/";
     var geoposition, geolng, geolat;
-    var correct = false;
-    $scope.responseText = "NOTHING";
+    var correct;
+    $scope.responseText;
     
     /** Define functions **/
     function getLocalVars() {
-      longitude = JSON.parse($window.localStorage.getItem("lng"));
-      latitude = JSON.parse($window.localStorage.getItem("lat"));
-      $window.localStorage.setItem("lng", angular.toJson(null));
-      $window.localStorage.setItem("lat", angular.toJson(null));
-      $window.localStorage.setItem("place_url", angular.toJson(null));
+      correct = JSON.parse($window.localStorage.getItem("correct"));
+      $window.localStorage.removeItem("correct");
     }
     function detectBadRedirect() {
       var baddata = false;
-      if (longitude === null || latitude === null) {
-        baddata = true;
-      }
-      if (place_url === null) {
+      if (correct === null || correct === undefined) {
         baddata = true;
       }
       if (baddata) {
         $scope.responseText = "You seem to have gotten here incorrectly...";
-        $log.info("You seem to have gotten here incorrectly...");
+        //$window.alert("You seem to have gotten here incorrectly...");
         //$window.location.href = homepage;
       }
     }
-    
-    function compareLocations() {
-      if (geolat>(latitude-0.0004502) && geolat<(latitude+0.0004502)) {
-        if (geolng>(longitude-0.00059249) && geolng<(longitude+0.00059249)) {
-          correct = true;
-        }
+    function determineResponse() {
+      if (correct === null || correct === undefined) {
+        $scope.responseText = "You seem to have gotten here incorrectly...";
+      } else if (correct) {
+        $scope.responseText = "Congratulations! You made it!"
+      } else {
+        $scope.responseText = "Sorry! You aren't there yet."
       }
-      correct = false;
     }
-    
     $scope.clickQuit = function() {
       $window.location.href = homepage;
     }
-    
-    function getUserLocation() {
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          geoposition = position;
-          geolng = position.coords.longitude;
-          geolat = position.coords.latitude;
-          
-          getLocalVars();
-          $log.info([geoposition, longitude, latitude]);
-          detectBadRedirect();
-          if (correct) {
-            $scope.responseText = "Congratulations! You made it!"
-          } else {
-            $scope.responseText = "Sorry! This isn't the right place. :("
-          }
-        })
-      } else {
-        // Browser doesn't support Geolocation
-        $scope.responseText = "Can't determine your location! :("
-      }
-    }
-    
+
     /** Run functions **/
-    getUserLocation();
+    getLocalVars();
+    detectBadRedirect();
+    determineResponse();
     
 });
