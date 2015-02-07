@@ -3,6 +3,7 @@ geoHunterControllers.controller('PlayCtrl',
     
     //Define all non-local variables here
     var longitude, latitude, place_url;
+    var homepage = "http://xuxiaoyu89.github.io/DevFest/";
     
     function getLocalVars() {
       longitude = JSON.parse($window.localStorage.getItem("lng"));
@@ -24,7 +25,7 @@ geoHunterControllers.controller('PlayCtrl',
       }
       if (baddata) {
         $window.alert("You seem to have gotten here incorrectly...");
-        $window.location.href = "http://xuxiaoyu89.github.io/DevFest/";
+        $window.location.href = homepage;
       }
     }
     
