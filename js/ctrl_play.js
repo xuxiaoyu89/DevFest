@@ -35,13 +35,12 @@ geoHunterControllers.controller('PlayCtrl',
       $scope.placeImage = place_url;
     }
     function compareLocations() {
+      correct = false;
       if (geolat>(latitude-0.0004502) && geolat<(latitude+0.0004502)) {
         if (geolng>(longitude-0.00059249) && geolng<(longitude+0.00059249)) {
           correct = true;
         }
       }
-      correct = false;
-      $log.info([correct, longitude, geolng, latitude, geolat]);
     }
     function clearLocalStorage() {
       $window.localStorage.removeItem("lng");
